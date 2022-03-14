@@ -1,0 +1,40 @@
+ALGORITHM Dot_product
+VAR
+    V1 : ARRAY_OF INTEGER[3];
+    V2 : ARRAY_OF INTEGER[3];
+    M : ARRAY_OF INTEGER[n][2];
+    n, i, j, ps_retour : INTEGER;
+BEGIN
+    //read elements
+    FOR i FROM 0 TO 2 DO
+        Read(V1[i]);
+    END_FOR
+    FOR j FROM 0 TO 2 DO
+        Read(V2[j]);
+    END_FOR
+    //create matrix
+    FOR i FROM 0 TO n-1  DO
+        M[i][0] := V1;
+        M[i][1] := V2;
+    END_FOR
+    //call the function    
+    FOR i FROM 1 TO n DO
+        ps_retour := dot_product_function(M[i][0],M[i][1]);
+        IF (ps_retour = 0) THEN
+            RETURN "orthogonal";
+        ELSE
+            RETURN "non-ortogonal";
+    END_FOR
+    
+END
+
+FUNCTION dot_product_function(VAR T1:ARRAY_OF INTEGER, VAR T2:ARRAY_OF INTEGER) : INTEGER
+VAR
+    i : INTEGER;
+    ps : INTEGER := 0;
+BEGIN
+    FOR i FROM 0 TO 3 DO
+        ps += T1[i]*T2[i];
+    END_FOR
+    RETURN ps;
+END
