@@ -1,14 +1,13 @@
 ALGORITHM Dot_product
 VAR
-    V1 : ARRAY_OF INTEGER[];
-    V2 : ARRAY_OF INTEGER[];
-    n, i, j, ps_retour : INTEGER;
+    V1 : ARRAY_OF FLOAT[];
+    V2 : ARRAY_OF FLOAT[];
+    n, i, j : INTEGER;
+    ps_retour : FLOAT;
 BEGIN
     //read elements
     FOR i FROM 1 TO V1.length DO
         Read(V1[i]);
-    END_FOR
-    FOR j FROM 1 TO V2.length DO
         Read(V2[j]);
     END_FOR 
 
@@ -26,10 +25,10 @@ BEGIN
     END_IF  
 END
 
-FUNCTION dot_product_function(VAR T1:ARRAY_OF INTEGER, VAR T2:ARRAY_OF INTEGER) : INTEGER
+FUNCTION dot_product_function(VAR T1:ARRAY_OF FLOAT, VAR T2:ARRAY_OF FLOAT) : FLOAT
 VAR
     i : INTEGER;
-    ps : INTEGER := 0;
+    ps : FLOAT := 0;
 BEGIN
     FOR i FROM 1 TO T1.length DO
         ps += T1[i]*T2[i];

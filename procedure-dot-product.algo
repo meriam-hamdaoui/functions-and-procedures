@@ -1,0 +1,34 @@
+ALGORITHM Dot_product
+VAR
+    V1 : ARRAY_OF FLOAT[];
+    V2 : ARRAY_OF FLOAT[];
+    n, i, j : INTEGER;
+    ps : FLOAT;
+BEGIN
+    //read elements
+    FOR i FROM 1 TO V1.length DO
+        Read(V1[i]);
+        Read(V2[j]);
+    END_FOR
+    
+    ps_product(ps, V1, v2);
+
+    
+END
+
+PROCEDURE ps_product(VAR ps : FLOAT, VAR A: ARRAY_OF ,  VAR B: ARRAY_OF FLOAT)
+VAR
+    i : INTEGER
+BEGIN
+    IF (A.length <> B.length) THEN
+        Write("the vectors should have same dimensions");
+    ELSE
+    FOR i FROM 1 TO A.length DO
+        ps += A[i]*B[i];
+    END_FOR  
+    IF (ps = 0) THEN
+        Write("orthogonal");
+    ELSE
+        Write("non-orthogonal");
+    END_IF  
+END
