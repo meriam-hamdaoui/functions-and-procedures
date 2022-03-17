@@ -2,7 +2,6 @@ ALGORITHM Dot_product
 VAR
     V1 : ARRAY_OF INTEGER[];
     V2 : ARRAY_OF INTEGER[];
-    M : ARRAY_OF INTEGER[n][2];
     n, i, j, ps_retour : INTEGER;
 BEGIN
     //read elements
@@ -11,21 +10,20 @@ BEGIN
     END_FOR
     FOR j FROM 1 TO V2.length DO
         Read(V2[j]);
-    END_FOR
-    //create matrix
-    FOR i FROM 1 TO n  DO
-        M[i][0] := V1;
-        M[i][1] := V2;
-    END_FOR
-    //call the function    
-    FOR i FROM 1 TO n DO
-        ps_retour := dot_product_function(M[i][0],M[i][1]);
-        IF (ps_retour = 0) THEN
-            RETURN "orthogonal";
-        ELSE
-            RETURN "non-orthogonal";
-    END_FOR
-    
+    END_FOR 
+
+    IF (V1.length <> V2.length) THEN
+        Write("the vectors should have same dimensions");
+    ELSE
+    //call the function 
+        FOR i FROM 1 TO n DO
+            ps_retour := dot_product_function(V1,V2);
+            IF (ps_retour = 0) THEN
+                Write("orthogonal");
+            ELSE
+                Write("non-orthogonal");
+        END_FOR
+    END_IF  
 END
 
 FUNCTION dot_product_function(VAR T1:ARRAY_OF INTEGER, VAR T2:ARRAY_OF INTEGER) : INTEGER
